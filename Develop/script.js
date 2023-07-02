@@ -1,71 +1,84 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
+let generateChar = (start, end) => {
+  
+    let randNum = Math.floor(Math.random()*(end-start+1) + start)
+    return String.fromCharCode(randNum)
+    
+  
 
-const lowerArray = [
-  "a",
-  "b",
-  "c",
-  "d",
-  "e",
-  "f",
-  "g",
-  "h",
-  "i",
-  "j",
-  "k",
-  "l",
-  "m",
-  "n",
-  "o",
-  "p",
-  "q",
-  "r",
-  "s",
-  "t",
-  "u",
-  "v",
-  "w",
-  "x",
-  "y",
-  "z"
-];
-const upperArray = lowerArray.map(x => x.toUpperCase())
-const numbersArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
-var specCharArray = [
-  "!",
-  '"',
-  "#",
-  "$",
-  "%",
-  "&",
-  "'",
-  "(",
-  ")",
-  "*",
-  "+",
-  ",",
-  "-",
-  ".",
-  "/",
-  ":",
-  ";",
-  "<",
-  "=",
-  ">",
-  "?",
-  "@",
-  "[",
-  "\\",
-  "]",
-  "^",
-  "_",
-  "`",
-  "{",
-  "|",
-  "}",
-  "~"
-];
+}
+
+// const lowerArray = [
+//   "a",
+//   "b",
+//   "c",
+//   "d",
+//   "e",
+//   "f",
+//   "g",
+//   "h",
+//   "i",
+//   "j",
+//   "k",
+//   "l",
+//   "m",
+//   "n",
+//   "o",
+//   "p",
+//   "q",
+//   "r",
+//   "s",
+//   "t",
+//   "u",
+//   "v",
+//   "w",
+//   "x",
+//   "y",
+//   "z"
+// ];
+// const upperArray = lowerArray.map(x => x.toUpperCase())
+
+
+
+
+
+// const numbersArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+// var specCharArray = [
+//   "!",
+//   '"',
+//   "#",
+//   "$",
+//   "%",
+//   "&",
+//   "'",
+//   "(",
+//   ")",
+//   "*",
+//   "+",
+//   ",",
+//   "-",
+//   ".",
+//   "/",
+//   ":",
+//   ";",
+//   "<",
+//   "=",
+//   ">",
+//   "?",
+//   "@",
+//   "[",
+//   "\\",
+//   "]",
+//   "^",
+//   "_",
+//   "`",
+//   "{",
+//   "|",
+//   "}",
+//   "~"
+// ];
 // console.log(specCharArray)
 
 function writePassword() {
@@ -92,22 +105,46 @@ function writePassword() {
 
     let lowercase = confirm("Do you want lowercase letters?");
     if (lowercase == true) {
-      passArray = passArray.concat(lowerArray);
+      for(i = 0; i < 15; i++){
+        
+        let character = generateChar(65, 90).toLowerCase()
+        passArray.push(character)
+      }
+      
     } 
 
     let uppercase = confirm("Do you want uppercase letters");
     if (uppercase == true) {
-      passArray = passArray.concat(upperArray);
+      for(i = 0; i < 15; i++){
+        let character = generateChar(65, 90)
+        passArray.push(character)
+      }
+      
     }
 
     let numbers = confirm("Do you want numbers?");
     if (numbers == true) {
-      passArray = passArray.concat(numbersArray);
+      for(i = 0; i < 15; i++){
+        let character = generateChar(48, 57)
+        passArray.push(character)
+      }
+
     }
 
     let specialChar = confirm("Do you want special characters");
     if (specialChar == true) {
-      passArray = passArray.concat(specCharArray);
+      for(i = 0; i < 15; i++){
+        let character = generateChar(32, 47)
+        passArray.push(character)
+      }
+      for(i = 0; i < 15; i++){
+        let character = generateChar(58, 64)
+        passArray.push(character)
+      }
+      for(i = 0; i < 15; i++){
+        let character = generateChar(123, 126)
+        passArray.push(character)
+      }
     } 
 
     if(lowercase == false && uppercase == false && specialChar == false && numbers == false){
